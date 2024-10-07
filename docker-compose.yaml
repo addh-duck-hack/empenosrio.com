@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  wordpress-test:
+    container_name: wordpress-test
+    image: wordpress:latest
+    volumes:
+      - wordpress_test_data:/var/www/html
+      - ./tema:/var/www/html/wp-content/themes/tema
+    ports:
+      - "96:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: (sK;fbM6AJP'KkW
+      WORDPRESS_DB_NAME: wordpress_test
+    networks:
+      - npm
+      - wordpress-test
+
+networks:
+  wordpress-test:
+    name: wordpress-test
+    driver: bridge
+  npm:
+    external: true
+
+volumes:
+  db_data: {}
+  wordpress_test_data: {}
