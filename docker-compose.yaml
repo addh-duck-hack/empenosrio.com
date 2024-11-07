@@ -7,6 +7,7 @@ services:
     volumes:
       - wordpress_test_data:/var/www/html
       - ./tema:/var/www/html/wp-content/themes/tema
+      - ./php.ini:/usr/local/etc/php/php.ini # Monta el archivo php.ini
     ports:
       - "96:80"
     restart: always
